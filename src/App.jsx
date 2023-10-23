@@ -8,18 +8,24 @@ import {
 } from 'react-leaflet'
 import { useState } from "react";
 import MostrarDatos from "./components/MostrarDatos";
+import FloatWindowMap from "./components/FloatWindowMap";
 
 function App() {
 
   const [barrioSeleccionado, setBarrioSeleccionado] = useState(null)
+  const [mouseover, setMouseover] = useState(null)
 
+  const handleMouseover = (properties) => {
+    setMouseover(properties)
+  }
   const onEachFeature = (feature, layer) => {
     if (feature.properties && feature.properties.NOMBRE) {
-    layer.bindPopup(`<p>Barrio: ${feature.properties.NOMBRE}</p>`);
     layer.on({
       click: () => {
         setBarrioSeleccionado(feature.properties)
-      }
+      },
+      mouseover: () => handleMouseover(feature.properties),
+      mouseout: () => handleMouseover(null),
     })
     }
   }
@@ -27,14 +33,18 @@ function App() {
   const getFeatureColor = numCluster => {
     return numCluster === 0 ? '#1FFF00' : numCluster === 1 ? '#FF0000' : numCluster === null ? '#343434' : '#F7FF00'
   }
-  
+
   const style = (feature) => {
+
+    const isSelected = feature.properties.NOMBRE === barrioSeleccionado?.NOMBRE
+    const isHovered = feature.properties.NOMBRE === mouseover?.NOMBRE
     const numCluster = feature.properties.CLUSTER_GE
+
     return {
-      fillColor: getFeatureColor(numCluster),
-      opacity: 2,
-      color: '#808080',
-      weight: 0.8,
+      fillColor: `${getFeatureColor(numCluster)}`,
+      opacity: 1,
+      color: isSelected || isHovered ? '#000000' : '#808080',
+      weight: isSelected || isHovered ? 1.5 : 0.8,
     }
   }
 
@@ -46,7 +56,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div style={{position: 'relative'}}>
         <MapContainer center={[6.2567783 , -75.6189033]} zoom={11}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -58,6 +68,8 @@ function App() {
             onEachFeature={onEachFeature}
           />
         </MapContainer>
+        <FloatWindowMap />
+      </div>
       <div>
         <select 
           onChange={handleDropdownChange} 
@@ -78,7 +90,6 @@ function App() {
           barrioSeleccionado.CLUSTER_GE === null ? <p>No se encontraron datos para el barrio {barrioSeleccionado.NOMBRE}</p> : 
           <MostrarDatos barrioSeleccionado={barrioSeleccionado}/>
         }
-      </div>
       </div>
     </>
   )
