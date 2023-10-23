@@ -1,21 +1,30 @@
+import '../App.css'
+
 const FloatWindowMap = () => {
   return (
     <div
-      style={{
-        position: 'absolute',
-        bottom: '10px',
-        right: '600px',
-        padding: '10px',
-        background: 'white',
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-        zIndex: 400,
-        opacity: 0.8,
-      }}
+      className=" absolute bottom-6 right-1 p-5 bg-white border-2 border-gray-300 rounded-2xl shadow-2xl z-50 opacity-80"
     >
-      <h3>Información del Barrio</h3>
-      <p>Nombre</p>
+      <div className=" flex gap-2 items-center">
+        <div className=" w-6 h-6 accidentalidad_baja">
+
+        </div>
+        <p>Grupo 1: Accidentalidad baja</p>
+      </div>
+
+      <div className=" flex gap-2 items-center">
+        <div className=" w-6 h-6 accidentalidad_media">
+
+        </div>
+        <p>Grupo 1: Accidentalidad Media</p>
+      </div>
+
+      <div className=" flex gap-2 items-center">
+        <div className=" w-6 h-6 accidentalidad_alta">
+
+        </div>
+        <p>Grupo 3: Accidentalidad Alta</p>
+      </div>
     </div>
   )
 }

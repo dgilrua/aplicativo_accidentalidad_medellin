@@ -1,5 +1,18 @@
 .leaflet-container {
   height: 50vh;
-  width: 50%;
+  width: 100%;
   border-radius: 2rem;
+  z-index: 1;
 }
+
+.accidentalidad_baja {
+  background-color: #80f570;
+}
+
+.accidentalidad_media {
+  background-color: #faf86d;
+}
+
+.accidentalidad_alta {
+  background-color: #fd7b7b;
+} 

@@ -56,7 +56,7 @@ function App() {
 
   return (
     <>
-      <div style={{position: 'relative'}}>
+      <div className=" relative w-1/2">
         <MapContainer center={[6.2567783 , -75.6189033]} zoom={11}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
