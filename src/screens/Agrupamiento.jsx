@@ -1,4 +1,3 @@
-import "leaflet/dist/leaflet.css";
 import '../App.css'
 import {datos_barrios} from '../datos'
 import { useState } from "react";
@@ -51,8 +50,8 @@ const Agrupamiento = () => {
   
     return (
       <Layout>
-        <h1 className=" text-center font-bold mb-5 text-4xl text-slate-800">Agrupamiento de barrios segun sus caracteristicas</h1>
-        <main className=" grid grid-cols-2 mt-10 p-10 gap-4">
+        <h1 className=" text-center font-bold py-10 text-4xl text-slate-800">Agrupamiento de barrios segun sus caracteristicas</h1>
+        <main className=" grid grid-cols-2 mt-10 px-10 pb-10 gap-4">
           <section className=" relative w-full">
             <Mapa 
               style={style}
@@ -64,21 +63,22 @@ const Agrupamiento = () => {
             <select 
               onChange={handleDropdownChange} 
               value={barrioSeleccionado?.NOMBRE ? barrioSeleccionado.NOMBRE : ''}
-              className=" px-5 py-3 border-2 border-slate-800 rounded-md w-full mb-5 text-center font-semibold text-xl"
+              className=" px-5 py-3 border-2 border-slate-500 rounded-md w-full mb-5 text-center font-semibold text-xl capitalize"
             >
               <option value="" disabled>Seleccione un barrio</option>
               {datos_barrios.features.map((feature) => (
                 <option  
                   key={crypto.randomUUID()} 
                   value={feature.properties.NOMBRE}
+                  className='capitalize'
                 >
                   {feature.properties.NOMBRE}
                 </option>
               ))}
             </select>
             {
-              barrioSeleccionado === null ? <p>Elige o haz click en un barrio para obtener mas informacion</p> : 
-              barrioSeleccionado.CLUSTER_GE === null ? <p>No se encontraron datos para el barrio {barrioSeleccionado.NOMBRE}</p> : 
+              barrioSeleccionado === null ? <p className='text-center mt-10 font-semibold text-3xl'>Elige un barrio o haz click en el mapa para obtener mas informacion</p> : 
+              barrioSeleccionado.CLUSTER_GE === null ? <p className='text-center mt-10 font-semibold text-3xl'>No se encontraron datos para el barrio {barrioSeleccionado.NOMBRE}</p> : 
               <MostrarDatos barrioSeleccionado={barrioSeleccionado}/>
             }
           </section>

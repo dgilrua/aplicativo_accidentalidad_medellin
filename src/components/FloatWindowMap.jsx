@@ -16,7 +16,7 @@ const FloatWindowMap = () => {
         <div className=" w-6 h-6 accidentalidad_media">
 
         </div>
-        <p>Grupo 1: Accidentalidad Media</p>
+        <p>Grupo 2: Accidentalidad Media</p>
       </div>
 
       <div className=" flex gap-2 items-center">
