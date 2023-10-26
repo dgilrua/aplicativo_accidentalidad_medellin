@@ -1,9 +1,14 @@
+import Form from "../components/Form"
 import Layout from "../components/Layout"
+import MostrarPrediccion from "../components/MostrarPrediccion"
 
 const Prediccion = () => {
   return (
     <Layout>
-      <div>Prediccion</div>
+      <div className="container-css grid grid-cols-2">
+        <Form />
+        <MostrarPrediccion />
+      </div>
     </Layout>
   )
 }

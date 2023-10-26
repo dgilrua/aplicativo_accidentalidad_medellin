@@ -16,3 +16,9 @@
 .accidentalidad_alta {
   background-color: #fd7b7b;
 } 
+
+.container-css {
+  width: 80rem;
+  max-width: 90%;
+  margin: 0 auto;
+}
