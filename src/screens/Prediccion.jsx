@@ -9,11 +9,14 @@ const Prediccion = () => {
 
   const [datosPrediccion, setDatosPrediccion] = useState({})
   const [datosPredichos, setdatosPredichos] = useState({})
+  const [eleccion, setEleccion] = useState("")
+  const [cargando, setCargando] = useState(false)
 
   useEffect(() => {
     const consultarApi = async () => {
       if (Object.keys(datosPrediccion).length === 0) return
       try {
+        setCargando(true)
         const url = 'https://accidentalidad-api.onrender.com'
         const respuesta = await axios.post(url, datosPrediccion, {
           headers: {
@@ -21,6 +24,7 @@ const Prediccion = () => {
           }
         })
         setdatosPredichos(respuesta.data.Respuesta)
+        setCargando(false)
       } catch (error) {
         console.log(error)
       }
@@ -36,9 +40,12 @@ const Prediccion = () => {
         <div className="container-css bg-gray-50 bg-opacity-80 grid p-10  my-5 rounded-lg shadow-lg">
           <Form 
             setDatosPrediccion={setDatosPrediccion}
+            setEleccion={setEleccion}
           />
           <MostrarPrediccion 
             datosPredichos={datosPredichos}
+            eleccion={eleccion}
+            cargando={cargando}
           />
         </div>
       </div>

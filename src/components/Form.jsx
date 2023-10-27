@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Error from "./Error"
-const Form = ({setDatosPrediccion}) => {
+const Form = ({setDatosPrediccion, setEleccion}) => {
 
   const [fechaInicio, setFechaInicio] = useState('')
   const [fechaFin, setFechaFin] = useState('')
@@ -24,6 +24,7 @@ const Form = ({setDatosPrediccion}) => {
         "Fecha_fin": fechaFin,
         "Tipo": rango
     })
+    setEleccion(rango)
   }
 
   return (
