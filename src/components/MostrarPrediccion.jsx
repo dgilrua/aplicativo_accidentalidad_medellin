@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Plot from "react-plotly.js"
+import {Bars} from 'react-loader-spinner'
 
 const MostrarPrediccion = ({datosPredichos, eleccion, cargando}) => {
   useEffect(() => {
@@ -54,25 +55,49 @@ const MostrarPrediccion = ({datosPredichos, eleccion, cargando}) => {
   }
 
   const datos_grafico = [
-    {type: 'bar', x: valores_x, y: valores_y,     marker: {
-      color: 'rgba(55, 128, 191, 0.7)', // Puedes ajustar el color base
+    {type: `${Object.keys(datosPredichos).length >= 50 ? 'scatter': 'bar'}`, x: valores_x, y: valores_y, marker: {
+      color: '#8eb826', // Puedes ajustar el color base
       line: {
-        color: 'rgba(55, 128, 191, 1)', // Puedes ajustar el color del borde
+        color: '#8eb826', // Puedes ajustar el color del borde
         width: 2,
       },
     },},
   ]
 
-  const layout_grafico = {width: 800, height: 600, title: `Predicciones ${eleccion}`, xaxis: {type: 'category'}}
+  const layout_grafico = {
+    width: 860, 
+    height: 600, 
+    title: {
+      text:  `Predicciones ${eleccion}`,
+      font: {
+        family: 'Sans-serif, monospace',
+        size: 24,
+      },
+    }, 
+    xaxis: {type: 'category'},
+  }
 
   return (
     <>
       {eleccion == "" ? <p className='text-center mt-10 font-semibold text-3xl'>Completa el formulario y haz click en el boton enviar para hacer una prediccion</p>: (
-        cargando ? <p className='text-center mt-10 font-semibold text-3xl'>Cargando...</p> :
-        <Plot
-          data={datos_grafico}
-          layout={layout_grafico}
-        />
+        cargando ? 
+        <div className="flex justify-center items-center">
+          <Bars
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="bars-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>:
+        <div className="flex justify-center mt-10">
+          <Plot
+            data={datos_grafico}
+            layout={layout_grafico}
+          />
+        </div>
       )}
     </>
   )

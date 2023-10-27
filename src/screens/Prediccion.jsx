@@ -37,7 +37,7 @@ const Prediccion = () => {
     <Layout>
       <div className="">
         <h1 className=" text-center font-bold my-10 text-4xl text-slate-800">Prediccion de accidentes tipo choque segun intervalo de tiempo</h1>
-        <div className="container-css bg-gray-50 bg-opacity-80 grid p-10  my-5 rounded-lg shadow-lg">
+        <div className="container-css bg-opacity-80 grid p-10  my-5 rounded-lg shadow-lg">
           <Form 
             setDatosPrediccion={setDatosPrediccion}
             setEleccion={setEleccion}
