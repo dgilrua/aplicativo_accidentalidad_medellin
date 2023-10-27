@@ -10,7 +10,8 @@ export default {
         primary: '#8eb826',
         secondary: '#a1cb36',
         background: '#f5f5f5',
-        third: '#778899'
+        third: '#778899',
+        import: ['./src/index.css']
       }
     },
   },

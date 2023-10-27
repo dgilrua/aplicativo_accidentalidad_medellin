@@ -28,7 +28,7 @@ const Form = ({setDatosPrediccion, setEleccion}) => {
   }
 
   return (
-    <div className="py-32">
+    <div className="py-0 sm:py-32">
       <form onSubmit={handleSubmit}>
         <div className="mb-12">
           <label className="block mb-3 text-slate-900 font-semibold text-xl" htmlFor="fechaInicio">Selecciona la fecha de inicio de la consulta</label>
