@@ -92,6 +92,7 @@ const MostrarPrediccion = ({datosPredichos, eleccion, cargando}) => {
             visible={true}
           />
         </div>:
+          Object.keys(datosPredichos).length === 0 ? <p className='text-center mt-10 font-semibold text-3xl'>Tu intervalo de fecha esta incorrecto, revisalo e ingresa nuevos datos</p>:
         <div className="flex justify-center mt-10">
           <Plot
             data={datos_grafico}
