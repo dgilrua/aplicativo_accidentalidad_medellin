@@ -36,6 +36,8 @@ const Form = ({setDatosPrediccion, setEleccion}) => {
             className="w-full text-center rounded-md font-semibold text-xl bg-slate-200 py-3 px-5" 
             id="fechaInicio"
             type="date" 
+            min={"2022-01-01"}
+            max={"2050-12-31"}
             onChange={e => setFechaInicio(e.target.value)}
             value={fechaInicio}
           />
@@ -46,6 +48,8 @@ const Form = ({setDatosPrediccion, setEleccion}) => {
             className="w-full text-center rounded-md font-semibold text-xl bg-slate-200 py-3 px-5" 
             id="fechaFin"
             type="date" 
+            min={"2022-01-01"}
+            max={"2050-12-31"}
             onChange={e => setFechaFin(e.target.value)}
             value={fechaFin}
           />
