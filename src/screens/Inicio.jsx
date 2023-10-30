@@ -11,16 +11,16 @@ export const Inicio = () => {
     <Layout>
       <div className='container-css'>
         <h1 className=" text-center font-bold my-20 text-4xl text-slate-800" >¡Bienvenido a nuestro portal <span className=' text-primary'>Medellin en Vias!</span></h1>
-        <div className='grid grid-cols-2'>
+        <div className='sm:grid sm:grid-cols-2'>
           <p className='text-2xl leading-loose'>Explora y comprende la realidad de la accidentalidad en Medellín a través de datos interactivos y predicciones precisas. Nuestra aplicación no solo te permite visualizar la accidentalidad pasada, sino que también predice futuros incidentes, brindándote herramientas poderosas para tomar decisiones informadas.</p>
-          <img className='mx-auto my-0' src={Avatar1} alt="" width={280} height={300}/>
+          <img className='mx-auto mt-10 sm:mt-0 my-0' src={Avatar1} alt="" width={280} height={300}/>
         </div>
-        <div className='grid grid-cols-2 mt-5'>
-          <img className='mx-auto my-0' src={Avatar2} alt="" width={280} height={300}/>
-          <p className='text-2xl leading-loose'>La seguridad vial es un aspecto crucial para el bienestar de nuestra comunidad. <span className=' text-primary font-semibold'>Medellin en Vias</span> no solo informa sobre incidentes pasados, sino que también te capacita para tomar acciones proactivas, contribuyendo a la construcción de un entorno más seguro y prevenido.</p>
+        <div className='sm:grid sm:grid-cols-2 mt-10 sm:mt-0 border-t-primary border-t-4 sm:border-none border-b-primary border-b-4'>
+          <p className='text-2xl leading-loose sm:order-2 mt-5 sm:mt-0'>La seguridad vial es un aspecto crucial para el bienestar de nuestra comunidad. <span className=' text-primary font-semibold'>Medellin en Vias</span> no solo informa sobre incidentes pasados, sino que también te capacita para tomar acciones proactivas, contribuyendo a la construcción de un entorno más seguro y prevenido.</p>
+          <img className='mx-auto my-0 sm:order-1 mt-10 sm:mt-0 mb-14 sm:mb-0' src={Avatar2} alt="" width={280} height={300}/>
         </div>
       </div>
-      <div className='mt-20 mb-20 mx-40 grid grid-cols-4'>
+      <div className=' mt-20 mb-20 mx-40 grid grid-cols-4'>
         <div className='items-center flex flex-col gap-5'>
           <img src={Mapa} alt="" width={150}/>
           <h3 className='text-center font-bold text-2xl'>Visualización Interactiva</h3>
