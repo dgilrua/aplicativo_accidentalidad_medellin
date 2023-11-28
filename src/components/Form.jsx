@@ -72,7 +72,11 @@ const Form = ({setDatosPrediccion, setEleccion}) => {
         {
           error === true ? 
           <Error /> :
-          <input type="submit" className=" hover:cursor-pointer rounded-sm w-1/4 bg-primary py-2 text-white font-bold text-xl mt-3"/>
+          (
+            <>
+              <input type="submit" className=" hover:cursor-pointer rounded-sm w-1/4 bg-primary py-2 text-white font-bold text-xl mt-3"/>
+            </>
+          )
         }
       </form>
     </div>

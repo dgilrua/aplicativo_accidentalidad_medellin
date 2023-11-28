@@ -10,6 +10,7 @@ const MostrarPrediccion = ({datosPredichos, eleccion, cargando}) => {
 
   const [valores_x, setValores_x] = useState([])
   const [valores_y, setValores_y] = useState([])
+  const [mostrarGrafico, setMostrarGrafico] = useState(true)
 
   const meses = {
     "1": "Enero",
@@ -93,11 +94,30 @@ const MostrarPrediccion = ({datosPredichos, eleccion, cargando}) => {
           />
         </div>:
           Object.keys(datosPredichos).length === 0 ? <p className='text-center mt-10 font-semibold text-3xl'>Tu intervalo de fecha esta incorrecto, revisalo e ingresa nuevos datos</p>:
-        <div className="flex justify-center mt-10">
-          <Plot
+        <div className={`${mostrarGrafico ? 'justify-center' : ''} flex flex-col  mt-10`}>
+          <div className="flex justify-around mb-10">
+            <button className="px-5 py-2 text-xl font-bold text-white bg-primary" onClick={() => setMostrarGrafico(true)}>Mostrar Grafico</button>
+            <button className="px-5 py-2 text-xl font-bold text-white bg-primary" onClick={() => setMostrarGrafico(false)}>Mostrar Tabla</button>
+          </div>
+          {
+            mostrarGrafico ?
+            <Plot
             data={datos_grafico}
             layout={layout_grafico}
-          />
+            />:
+            <div className="mx-auto mt-10 overflow-y-scroll max-h-[400px] px-5">
+              <table className="border">
+                <th className="font-bold border px-3 py-3 text-2xl uppercase">{eleccion}</th>
+                <th className="font-bold border px-3 py-3 text-2xl uppercase">Cantidad de accidentes</th>
+                {valores_x.map((valor, index) => (
+                  <tr key={index}>
+                    <td className="px-5 py-3 text-xl font-bold border text-center">{valor}</td>
+                    <td className="px-5 py-3 text-xl font-bold border text-center">{valores_y[index]}</td>
+                  </tr>
+                ))}
+              </table>
+            </div>
+          }
         </div>
       )}
     </>
